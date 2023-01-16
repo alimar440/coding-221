@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1655859266 source:c:\users\core\documents\tp algo\fibonaxhi\main.c
+	<stdio.h>
+	<stdlib.h>
+

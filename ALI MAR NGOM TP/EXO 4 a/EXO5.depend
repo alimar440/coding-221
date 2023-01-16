@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1653007804 source:c:\users\core\documents\tp algo\exo5\main.c
+	<stdio.h>
+	<stdlib.h>
+
