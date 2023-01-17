@@ -10,38 +10,36 @@ void affiche (int t[] , int n )
 int sum(int t[] ,int n){
     if (n==0)
         return t[0];
-    return sum(t,n-1) + t[n];
+    return sum(t,n-1) + t[n-1];
     }
+int dicho(int t[] ,int n, int reche ,int droite , int gauche){
+    int milieu = (droite + gauche ) / 2;
+     if (t[milieu]== reche)
+        return milieu ;
+     else
+        if(gauche<=droite){
+           if(t[milieu]<reche) {
+              return dicho(t, milieu + 1 , reche , droite , milieu+1 ) ;
+            }
+           else
+              return dicho(t,milieu - 1 , reche , milieu -1 , gauche );
+
+        }
+}
 int main()
 {
-    int n ,i ,tab[100],rech,position,somm;
-    printf("donner la taille ");
+    int n ,i ,tab[100],rech,position,somm ;
+    int mili ,t ;
+    printf("donner la taille \n");
     scanf("%d",&n);
     for(i = 0 ; i<=n ; i++)
-       tab[i]= i  ;
+       tab[i]= i+2  ;
     affiche(tab,n);
     somm = sum(tab,n);
-    printf("\n %d ",somm);
+    printf("\nla somme est  %d \n ",somm);
     printf("Quel nombre Chercher vous ?\n") ;
     scanf("%d",&rech) ;
-    int trouve =0 ;
-    int droit = n;
-    int gauche = 0;
-    while(trouve) {
-         int milieu = (gauche + droit )/ 2 ;
-        if (tab[milieu] == rech ){
-           trouve = 1 ;
-           position = milieu ;}
-        else
-            if(tab[milieu]<rech)
-                gauche = milieu + 1 ;
-            else
-                droit = milieu - 1 ;
-    }
-    if(trouve == 1)
-        printf("trouver \n le nombre se trouve a la position %d \n",position);
-    else
-        printf("le nombre ne se trouve pas dans le tableau");
-
-    return 0;
+    int recherche = dicho(tab,n,rech,n,0);
+    printf(" trouver a la position  %d ",recherche-1);
+    return 0 ;
 }
